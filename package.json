@@ -4,7 +4,12 @@
   "description": "A web portal solution for Safe Place International's LGBTQ+ refugees.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pg:init": "pg_ctl init -D data",
+    "pg:start": "pg_ctl -D data start",
+    "pg:createdb": "createdb -h 127.0.0.1 app",
+    "pg:stop": "pg_ctl -D data stop",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -21,9 +26,11 @@
     "cors": "^2.8.5",
     "dot-env": "^0.0.1",
     "express": "^4.18.1",
+    "helmet": "^5.1.0",
     "morgan": "^1.10.0",
     "node-postgres": "^0.6.2",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3"
-  }
+  },
+  "type": "module"
 }
