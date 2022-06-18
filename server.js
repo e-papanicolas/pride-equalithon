@@ -13,8 +13,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// * change cors configuration to this when running with a front end
+// const corsOptions = {origin: "http://localhost:____"};
+// app.use(cors(corsOptions));
+
 app.get("/", (req, res, next) => {
-  res.send("App is running");
+  res.send("Hello World!");
 });
 
 // start server
