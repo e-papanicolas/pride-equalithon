@@ -1,9 +1,7 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
+import "dotenv/config";
 
 const app = express();
 const port = process.env.PORT || 8081;
