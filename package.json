@@ -2,7 +2,7 @@
   "name": "pride-equalithon",
   "version": "1.0.0",
   "description": "A web portal solution for Safe Place International's LGBTQ+ refugees.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
@@ -27,14 +27,13 @@
   "homepage": "https://github.com/e-papanicolas/pride-equalithon#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dot-env": "^0.0.1",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "helmet": "^5.1.0",
     "morgan": "^1.10.0",
-    "node-postgres": "^0.6.2",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.0"
-  }
+  },
+  "type": "module"
 }
