@@ -1,6 +1,6 @@
 import dbConfig from "../config/db.config.js";
 import { Sequelize } from "sequelize";
-// import users from "./user.model.js";
+import users from "./user.model.js";
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -15,7 +15,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-// db.users = users(sequelize, Sequelize);
+db.users = users(sequelize, Sequelize);
 
 try {
   await sequelize.authenticate();
