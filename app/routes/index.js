@@ -1,3 +1,3 @@
-import userRoutes from "./userRoutes.js";
+import userRoutes from "./user.routes.js";
 
 export { userRoutes };
