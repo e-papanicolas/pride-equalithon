@@ -1,17 +1,17 @@
-const express = require("express");
-const morgan = require("morgan");
-const helmet = require("helmet");
-const cors = require("cors");
+import express from "express";
+import logger from "morgan";
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8081;
 
-app.use(helmet());
+app.use(logger("dev"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-
-if (process.env.NODE_ENV !== "development") {
-  app.use(morgan("tiny"));
-}
 
 app.get("/", (req, res, next) => {
   res.send("App is running");
@@ -20,4 +20,4 @@ app.get("/", (req, res, next) => {
 // start server
 app.listen(port, () => console.log(`Server is running on ${port}`));
 
-module.exports = app;
+export default app;
