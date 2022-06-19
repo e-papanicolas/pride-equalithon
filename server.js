@@ -2,7 +2,7 @@ import express from "express";
 import logger from "morgan";
 import cors from "cors";
 import "dotenv/config";
-import { db } from "./app/models/index.js";
+import { db } from "./app/database/models/index.js";
 import { userRoutes } from "./app/routes/index.js";
 
 const app = express();
