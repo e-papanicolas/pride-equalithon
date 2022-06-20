@@ -1,8 +1,9 @@
 import { db } from "../database/models/index.js";
 
 const User = db.users;
+const userActions = {};
 
-User.new = async (req, res, next) => {
+userActions.new = async (req, res, next) => {
   // validate request
   if (!req.body.username) {
     res.status(400).json({ message: "Fields cannot be empty" });
@@ -22,7 +23,7 @@ User.new = async (req, res, next) => {
   }
 };
 
-User.getAll = async (req, res, next) => {
+userActions.getAll = async (req, res, next) => {
   try {
     const allUsers = await User.findAll();
     res.status(200).json(allUsers);
@@ -31,7 +32,7 @@ User.getAll = async (req, res, next) => {
   }
 };
 
-User.getOne = async (req, res, next) => {
+userActions.getOne = async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await User.findByPk(id);
@@ -41,7 +42,7 @@ User.getOne = async (req, res, next) => {
   }
 };
 
-User.updateOne = async (req, res, next) => {
+userActions.updateOne = async (req, res, next) => {
   try {
     const id = req.params.id;
     let updatedUser = await User.findByPk(id);
@@ -53,7 +54,7 @@ User.updateOne = async (req, res, next) => {
   }
 };
 
-User.destroyOne = async (req, res, next) => {
+userActions.destroyOne = async (req, res, next) => {
   try {
     const id = req.params.id;
     const userToDelete = await User.findByPk(id);
@@ -64,4 +65,4 @@ User.destroyOne = async (req, res, next) => {
   }
 };
 
-export default User;
+export default userActions;
