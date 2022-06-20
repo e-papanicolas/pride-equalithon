@@ -1,6 +1,7 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
+import helmet from "helmet";
 import "dotenv/config";
 import { db } from "./app/database/models/index.js";
 import { userRoutes } from "./app/routes/index.js";
@@ -8,6 +9,7 @@ import { userRoutes } from "./app/routes/index.js";
 const app = express();
 const port = process.env.PORT || 8081;
 
+app.use(helmet());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
