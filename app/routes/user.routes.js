@@ -5,6 +5,10 @@ const userRoutes = express.Router();
 
 // create a new user
 userRoutes.post("/", userActions.new);
+// login an existing user
+userRoutes.post("/login", userActions.login);
+// refresh tokens
+userRoutes.post("/refresh", userActions.tokenRefresh);
 // retrieve all Users
 userRoutes.get("/", userActions.getAll);
 // retrieve a single user with id
