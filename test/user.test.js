@@ -1,24 +1,22 @@
-import chai, { expect } from "chai";
+import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../server.js";
 
 chai.should();
 chai.use(chaiHttp);
 
-describe("User Unit Tests", () => {
-  describe("Test GET route /user", () => {
-    it("should return a 200 status code", async () => {
+describe("User Integration Tests", () => {
+  describe("/GET users", () => {
+    it("It should GET all users", (done) => {
       chai
         .request(app)
         .get("/user")
         .send()
-        .then((res) => {
-          expect(res).to.have.status(200);
-        })
-        .catch((err) => {
-          throw err;
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("array");
+          done();
         });
     });
-    it("should throw an error if the user is not added to the database", async () => {});
   });
 });
