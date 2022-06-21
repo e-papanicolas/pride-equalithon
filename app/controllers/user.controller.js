@@ -73,6 +73,7 @@ userActions.login = async (req, res, next) => {
     const token = generateAccessToken(payload);
     const refreshToken = generateRefreshToken(payload);
     addTokenToList(refreshToken, token);
+    res.status(200).json({ user, token, refreshToken });
   } catch (err) {
     return res.status(401).json({ message: err.message });
   }
@@ -82,10 +83,11 @@ userActions.tokenRefresh = async (req, res, next) => {
   const data = req.body;
   if (data.refreshToken && data.refreshToken in refreshList) {
     const decoded = jwt.verify(data.refreshToken, process.env.JWT_R_KEY);
-    const token = generateAccessToken(decoded.id);
-    const refreshToken = generateRefreshToken(decoded.id);
+    console.log(decoded);
+    const token = generateAccessToken(decoded.user);
+    const refreshToken = generateRefreshToken(decoded.user);
     addTokenToList(refreshToken, token);
-    res.status(200).json({ user: decoded, token, refreshToken });
+    res.status(200).json({ user: decoded.user, token, refreshToken });
   } else {
     res.status(401).json({ message: "Invalid refresh token" });
   }
