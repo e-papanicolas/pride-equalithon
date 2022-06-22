@@ -18,4 +18,6 @@ userRoutes.put("/:id", userActions.updateOne);
 // delete a user with an id
 userRoutes.delete("/:id", userActions.destroyOne);
 
+// userRoutes.delete("/", userActions.destroyAll);
+
 export default userRoutes;
